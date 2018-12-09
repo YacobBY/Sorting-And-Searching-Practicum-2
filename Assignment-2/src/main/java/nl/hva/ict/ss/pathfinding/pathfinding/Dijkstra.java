@@ -168,7 +168,7 @@ public class Dijkstra {
                 return false;
             }
         }
-        System.out.println(counter.size());
+//        System.out.println(counter.size());
         return true;
     }
  }

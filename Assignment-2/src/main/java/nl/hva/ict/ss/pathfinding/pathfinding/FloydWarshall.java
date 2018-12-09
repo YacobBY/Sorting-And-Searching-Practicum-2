@@ -5,6 +5,7 @@ import nl.hva.ict.ss.pathfinding.weigthedgraph.DirectedEdge;
 import nl.hva.ict.ss.pathfinding.weigthedgraph.EdgeWeightedDigraph;
 import nl.hva.ict.ss.pathfinding.weigthedgraph.EdgeWeightedDirectedCycle;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -34,13 +35,21 @@ import java.util.Stack;
     private boolean hasNegativeCycle;  // is there a negative cycle?
     private double[][] distTo;  // distTo[v][w] = length of shortest v->w path
     private DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
+    private ArrayList<Integer> counter = new ArrayList<>();
 
+
+    public void incrementCounter(int countInt){
+        if (!counter.contains(countInt)){
+            counter.add(countInt);
+        }
+    }
     /**
      * Computes a shortest paths tree from each vertex to to every other vertex in
      * the edge-weighted digraph <tt>G</tt>. If no such shortest path exists for
      * some pair of vertices, it computes a negative cycle.
      * @param G the edge-weighted digraph
      */
+
     public FloydWarshall(AdjMatrixEdgeWeightedDigraph G) {
         int V = G.V();
         distTo = new double[V][V];
@@ -51,6 +60,8 @@ import java.util.Stack;
             for (int w = 0; w < V; w++) {
                 distTo[v][w] = Double.POSITIVE_INFINITY;
             }
+            incrementCounter(v);
+//            System.out.println(v);
         }
 
         // initialize distances using edge-weighted digraph's
@@ -80,10 +91,12 @@ import java.util.Stack;
                 // check for negative cycle
                 if (distTo[v][v] < 0.0) {
                     hasNegativeCycle = true;
+                    System.out.println(counter.size());
                     return;
                 }
             }
         }
+        System.out.println(counter.size());
     }
 
     /**
@@ -91,6 +104,7 @@ import java.util.Stack;
      * @return <tt>true</tt> if there is a negative cycle, and <tt>false</tt> otherwise
      */
     public boolean hasNegativeCycle() {
+
         return hasNegativeCycle;
     }
 
