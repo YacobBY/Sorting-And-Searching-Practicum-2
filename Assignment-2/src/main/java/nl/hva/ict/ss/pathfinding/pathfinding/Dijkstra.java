@@ -4,6 +4,7 @@ import nl.hva.ict.ss.pathfinding.weigthedgraph.DirectedEdge;
 import nl.hva.ict.ss.pathfinding.weigthedgraph.EdgeWeightedDigraph;
 import nl.hva.ict.ss.pathfinding.weigthedgraph.IndexMinPQ;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -31,6 +32,7 @@ public class Dijkstra {
     private double[] distTo;          // distTo[v] = distance  of shortest s->v path
     private DirectedEdge[] edgeTo;    // edgeTo[v] = last edge on shortest s->v path
     private IndexMinPQ<Double> pq;    // priority queue of vertices
+    private ArrayList<Integer> counter = new ArrayList<>();
 
     /**
      * Computes a shortest paths tree from <tt>s</tt> to every other vertex in
@@ -110,7 +112,11 @@ public class Dijkstra {
         }
         return path;
     }
-
+    public void incrementCounter(int countInt){
+        if (!counter.contains(countInt)){
+            counter.add(countInt);
+        }
+    }
 
     // check optimality conditions:
     // (i) for all edges e:            distTo[e.to()] <= distTo[e.from()] + e.weight()
@@ -119,6 +125,8 @@ public class Dijkstra {
 
         // check that edge weights are nonnegative
         for (DirectedEdge e : G.edges()) {
+            incrementCounter(e.from());
+
             if (e.weight() < 0) {
                 System.err.println("negative edge weight detected");
                 return false;
@@ -160,6 +168,7 @@ public class Dijkstra {
                 return false;
             }
         }
+        System.out.println(counter.size());
         return true;
     }
  }
