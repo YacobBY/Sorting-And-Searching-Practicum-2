@@ -30,7 +30,7 @@ public class TileWorldUtil implements TileWorld {
     /**
      * The directory where all tile world solution images are stored
      */
-    public static String outputDir = "D:\\Coding\\Sorting And Searching 2018\\Sorting-And-Searching-Practicum-2\\Assignment-2\\src\\main\\resources\\output";
+    public static String outputDir = "C:\\Coding\\schl\\Sorting-And-Searching-Practicum-2\\Assignment-2\\src\\main\\resources\\output\\";
     /**
      * The format/extension of the image that is saved.
      */
