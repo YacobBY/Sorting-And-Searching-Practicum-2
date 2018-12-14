@@ -19,3 +19,12 @@ public interface RGBColor {
     int RGB_CYAN = 0xff00ffff;
     int RGB_PINK = 0xffffc0cb;
 }
+//    int RGB_WHITE = ffffff;
+//    int RGB_YELLOW = ffff00;
+//    int RGB_BLUE = 0000ff;
+//    int RGB_GREY = 808080;
+//    int RGB_BLACK = 000000;
+//    int RGB_RED = ff0000;
+//    int RGB_GREEN = 00ff00;
+//    int RGB_CYAN = 00ffff;
+//    int RGB_PINK = ffc0cb
