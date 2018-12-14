@@ -33,6 +33,7 @@ public class Dijkstra {
     private DirectedEdge[] edgeTo;    // edgeTo[v] = last edge on shortest s->v path
     private IndexMinPQ<Double> pq;    // priority queue of vertices
     private ArrayList<Integer> counter = new ArrayList<>();
+//    private int countr;
 
     /**
      * Computes a shortest paths tree from <tt>s</tt> to every other vertex in
@@ -125,12 +126,14 @@ public class Dijkstra {
 
         // check that edge weights are nonnegative
         for (DirectedEdge e : G.edges()) {
-            incrementCounter(e.from());
+//            incrementCounter(e.from());
 
             if (e.weight() < 0) {
                 System.err.println("negative edge weight detected");
                 return false;
             }
+
+//            countr++;
         }
 
         // check that distTo[v] and edgeTo[v] are consistent
@@ -155,6 +158,8 @@ public class Dijkstra {
                     return false;
                 }
             }
+
+//            countr++;
         }
 
         // check that all edges e = v->w on SPT satisfy distTo[w] == distTo[v] + e.weight()
@@ -167,8 +172,11 @@ public class Dijkstra {
                 System.err.println("edge " + e + " on shortest path not tight");
                 return false;
             }
+//             countr++;
+            incrementCounter(w);
         }
         System.out.println("Dijkstra " + counter.size());
+//        System.out.println(countr);
         return true;
     }
 

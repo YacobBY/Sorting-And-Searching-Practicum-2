@@ -36,7 +36,7 @@ import java.util.Stack;
     private double[][] distTo;  // distTo[v][w] = length of shortest v->w path
     private DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
     private ArrayList<Integer> counter = new ArrayList<>();
-    private int countnr;
+//    private int countr;
 
 
     public void incrementCounter(int countInt){
@@ -62,7 +62,7 @@ import java.util.Stack;
             for (int w = 0; w < V; w++) {
                 distTo[v][w] = Double.POSITIVE_INFINITY;
             }
-            countnr++;
+//            countr++;
 
 //            System.out.println(v);
         }
@@ -78,7 +78,7 @@ import java.util.Stack;
                 distTo[v][v] = 0.0;
                 edgeTo[v][v] = null;
             }
-
+//            countr++;
         }
 
         // Floyd-Warshall updates
@@ -93,6 +93,9 @@ import java.util.Stack;
                         edgeTo[v][w] = edgeTo[i][w];
 //                        System.out.println(v);
                         incrementCounter(v);
+                        incrementCounter(i);
+                        incrementCounter(w);
+//                        countr +=3;
 
                     }
                 }
@@ -106,7 +109,7 @@ import java.util.Stack;
         }
 
         System.out.println("Floyd " + counter.size());
-//        System.out.println(countnr);
+//        System.out.println(countr);
 }
 
     /**
