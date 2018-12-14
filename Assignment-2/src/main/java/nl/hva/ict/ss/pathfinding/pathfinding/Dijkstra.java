@@ -168,7 +168,8 @@ public class Dijkstra {
                 return false;
             }
         }
-//        System.out.println(counter.size());
+        System.out.println("Dijkstra " + counter.size());
         return true;
     }
+
  }

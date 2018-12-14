@@ -36,6 +36,7 @@ import java.util.Stack;
     private double[][] distTo;  // distTo[v][w] = length of shortest v->w path
     private DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
     private ArrayList<Integer> counter = new ArrayList<>();
+    private int countnr;
 
 
     public void incrementCounter(int countInt){
@@ -51,6 +52,7 @@ import java.util.Stack;
      */
 
     public FloydWarshall(AdjMatrixEdgeWeightedDigraph G) {
+
         int V = G.V();
         distTo = new double[V][V];
         edgeTo = new DirectedEdge[V][V];
@@ -60,7 +62,8 @@ import java.util.Stack;
             for (int w = 0; w < V; w++) {
                 distTo[v][w] = Double.POSITIVE_INFINITY;
             }
-            incrementCounter(v);
+            countnr++;
+
 //            System.out.println(v);
         }
 
@@ -75,29 +78,36 @@ import java.util.Stack;
                 distTo[v][v] = 0.0;
                 edgeTo[v][v] = null;
             }
+
         }
 
         // Floyd-Warshall updates
         for (int i = 0; i < V; i++) {
             // compute shortest paths using only 0, 1, ..., i as intermediate vertices
             for (int v = 0; v < V; v++) {
+
                 if (edgeTo[v][i] == null) continue;  // optimization
                 for (int w = 0; w < V; w++) {
                     if (distTo[v][w] > distTo[v][i] + distTo[i][w]) {
                         distTo[v][w] = distTo[v][i] + distTo[i][w];
                         edgeTo[v][w] = edgeTo[i][w];
+//                        System.out.println(v);
+                        incrementCounter(v);
+
                     }
                 }
                 // check for negative cycle
                 if (distTo[v][v] < 0.0) {
                     hasNegativeCycle = true;
-                    System.out.println(counter.size());
+                    System.out.println(  counter.size());
                     return;
                 }
             }
         }
-        System.out.println(counter.size());
-    }
+
+        System.out.println("Floyd " + counter.size());
+//        System.out.println(countnr);
+}
 
     /**
      * Is there a negative cycle?
