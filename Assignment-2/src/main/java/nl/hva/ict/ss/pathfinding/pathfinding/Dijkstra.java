@@ -32,7 +32,7 @@ public class Dijkstra {
     private double[] distTo;          // distTo[v] = distance  of shortest s->v path
     private DirectedEdge[] edgeTo;    // edgeTo[v] = last edge on shortest s->v path
     private IndexMinPQ<Double> pq;    // priority queue of vertices
-    private ArrayList<Integer> counter = new ArrayList<>();
+    public ArrayList<Integer> counter = new ArrayList<>();
 //    private int countr;
 
     /**

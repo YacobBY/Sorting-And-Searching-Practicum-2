@@ -35,7 +35,7 @@ import java.util.Stack;
     private boolean hasNegativeCycle;  // is there a negative cycle?
     private double[][] distTo;  // distTo[v][w] = length of shortest v->w path
     private DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
-    private ArrayList<Integer> counter = new ArrayList<>();
+    public ArrayList<Integer> counter = new ArrayList<>();
 //    private int countr;
 
 
