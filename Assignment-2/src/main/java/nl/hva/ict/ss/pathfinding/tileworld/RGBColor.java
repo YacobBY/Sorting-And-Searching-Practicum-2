@@ -19,7 +19,6 @@ public interface RGBColor {
     int RGB_CYAN = 0xff00ffff;
     int RGB_PINK = 0xffffc0cb;
 }
-//Read entire bottom part before opening paint3d:
 //Make maps with Paint3d. Create new image around 25x25 to 50x50 however big you like. Bigger means more calc time.
 //Add all these custom colors in the color pallette in bottom right with the numbers and letters below (ffff00 etc)
 //Then use the paint bucket to make the yellow base layer with yellow, make a red and green dot with the PIXEL PEN with a density of 1.
