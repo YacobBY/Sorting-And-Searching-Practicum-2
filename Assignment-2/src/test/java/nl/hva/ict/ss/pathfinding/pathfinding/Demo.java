@@ -19,7 +19,7 @@ public class Demo {
         // Make sure that it is writeable and we know where to look for it
 
         System.out.printf("ID;Length Dijkstra;Length Floyd;Costs Dijkstra; Costs Floyd\n");
-        for (int i = 23; i <= 25; i++) {
+        for (int i = 1; i <= 25; i++) {
             // Read the graph directly from a image
             EdgeWeightedDigraph graafDijkstra = new EdgeWeightedDigraph("i" + i);
             // Get the start and end node
